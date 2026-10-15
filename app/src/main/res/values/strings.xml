@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FlashCard</string>
+
+    <string name="semilla_1_pregunta">¿Qué significa MVVM?</string>
+    <string name="semilla_1_respuesta">Model-View-ViewModel: patrón que separa los datos, la lógica y la pantalla.</string>
+
+    <string name="semilla_2_pregunta">¿Qué hace un ViewModel?</string>
+    <string name="semilla_2_respuesta">Guarda el estado de la pantalla y recibe los eventos del usuario.</string>
+
+    <string name="semilla_3_pregunta">¿Para qué sirve StateFlow?</string>
+    <string name="semilla_3_respuesta">Para emitir el estado y que la pantalla se actualice cuando este cambia.</string>
+
+    <string name="semilla_4_pregunta">¿Qué es un Composable?</string>
+    <string name="semilla_4_respuesta">Una función de Kotlin que dibuja un elemento de la interfaz.</string>
+</resources>
