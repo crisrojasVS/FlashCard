@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">FlashCard</string>
 
+    //Apartado de las Preguntas
     <string name="semilla_1_pregunta">¿Qué significa MVVM?</string>
     <string name="semilla_1_respuesta">Model-View-ViewModel: patrón que separa los datos, la lógica y la pantalla.</string>
 
@@ -12,4 +13,14 @@
 
     <string name="semilla_4_pregunta">¿Qué es un Composable?</string>
     <string name="semilla_4_respuesta">Una función de Kotlin que dibuja un elemento de la interfaz.</string>
+
+    //Textos para la pantalla
+    <string name="titulo_lista">Mis tarjetas</string>
+    <string name="cantidad_tarjetas">Tarjetas guardadas: %1$d</string>
+    <string name="chip_base">Base: %1$d</string>
+    <string name="chip_mias">Mías: %1$d</string>
+    <string name="boton_estudiar">Estudiar</string>
+    <string name="etiqueta_base">Base</string>
+    <string name="etiqueta_mia">Mía</string>
+    <string name="agregar_tarjeta">Agregar tarjeta</string>
 </resources>

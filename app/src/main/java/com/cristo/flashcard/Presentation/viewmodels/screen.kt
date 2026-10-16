@@ -1,4 +1,4 @@
-package com.cristo.flashcard.Presentacion.viewmodels
+package com.cristo.flashcard.Presentation.viewmodels
 
 enum class screen {
     LISTA,
