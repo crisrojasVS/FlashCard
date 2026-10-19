@@ -23,4 +23,24 @@
     <string name="etiqueta_base">Base</string>
     <string name="etiqueta_mia">Mía</string>
     <string name="agregar_tarjeta">Agregar tarjeta</string>
+
+    //Para lo Nuevo
+
+    <string name="titulo_estudio">Estudiar</string>
+    <string name="progreso">Tarjeta %1$d de %2$d</string>
+    <string name="etiqueta_pregunta">PREGUNTA</string>
+    <string name="etiqueta_respuesta">RESPUESTA</string>
+    <string name="pista_voltear">Toca la tarjeta para ver la respuesta</string>
+    <string name="boton_anterior">Anterior</string>
+    <string name="boton_siguiente">Siguiente</string>
+    <string name="boton_volver_lista">Volver a la lista</string>
+    <string name="volver">Volver</string>
+
+    <string name="titulo_nueva">Nueva tarjeta</string>
+    <string name="subtitulo_nueva">Escribe una pregunta y su respuesta</string>
+    <string name="campo_pregunta">Pregunta</string>
+    <string name="campo_respuesta">Respuesta</string>
+    <string name="boton_guardar">Guardar tarjeta</string>
+    <string name="boton_cancelar">Cancelar</string>
+    <string name="error_campos_vacios">Escribe la pregunta y la respuesta</string>
 </resources>

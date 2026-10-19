@@ -11,4 +11,7 @@
     <color name="chip_base_texto">#3730A3</color>
     <color name="chip_mia_fondo">#D1FAE5</color>
     <color name="chip_mia_texto">#047857</color>
+
+    <color name="borde">#D6D9F0</color>
+    <color name="error">#DC2626</color>
 </resources>
