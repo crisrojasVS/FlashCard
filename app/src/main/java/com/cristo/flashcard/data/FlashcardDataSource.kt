@@ -9,12 +9,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.json.JSONArray
 import org.json.JSONObject
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 
 private val Context.dataStore by preferencesDataStore(name = "flashcards")
 
 class FlashcardDataSource(private val context: Context) {
 
     private val claveTarjetas = stringPreferencesKey("tarjetas_usuario")
+
+    private val claveEliminadas = stringSetPreferencesKey("tarjetas_eliminadas")
 
     fun tarjetasSemilla(): List<Flashcard> {
         return listOf(
@@ -55,6 +58,19 @@ class FlashcardDataSource(private val context: Context) {
     suspend fun guardarUsuario(lista: List<Flashcard>) {
         context.dataStore.edit { preferencias ->
             preferencias[claveTarjetas] = convertirATexto(lista)
+        }
+    }
+
+    fun leerEliminadas(): Flow<Set<Int>> {
+        return context.dataStore.data.map { preferencias ->
+            val ids = preferencias[claveEliminadas] ?: emptySet()
+            ids.map { it.toInt() }.toSet()
+        }
+    }
+
+    suspend fun guardarEliminadas(ids: Set<Int>) {
+        context.dataStore.edit { preferencias ->
+            preferencias[claveEliminadas] = ids.map { it.toString() }.toSet()
         }
     }
 

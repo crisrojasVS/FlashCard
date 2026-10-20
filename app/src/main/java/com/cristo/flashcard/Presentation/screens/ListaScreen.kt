@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -26,6 +25,11 @@ import com.cristo.flashcard.Presentation.components.Etiqueta
 import com.cristo.flashcard.Presentation.components.TarjetaItem
 import com.cristo.flashcard.Presentation.viewmodels.FlashcardUiState
 import com.cristo.flashcard.R
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import com.cristo.flashcard.Presentation.components.DialogoEliminar
 
 @Composable
 fun ListaScreen(
@@ -34,6 +38,9 @@ fun ListaScreen(
     onNueva: () -> Unit,
     onEliminar: (Int) -> Unit
 ) {
+
+    var idAEliminar by rememberSaveable { mutableStateOf<Int?>(null) }
+    val tarjetaAEliminar = estado.tarjetas.find { it.id == idAEliminar }
 
     Box(
         modifier = Modifier
@@ -58,17 +65,19 @@ fun ListaScreen(
                 ),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                item {
-                    BotonDegradado(
-                        texto = stringResource(R.string.boton_estudiar),
-                        onClick = onEstudiar,
-                        icono = Icons.Default.PlayArrow
-                    )
+                if (estado.tarjetas.isNotEmpty()) {
+                    item {
+                        BotonDegradado(
+                            texto = stringResource(R.string.boton_estudiar),
+                            onClick = onEstudiar,
+                            icono = Icons.Default.PlayArrow
+                        )
+                    }
                 }
                 items(estado.tarjetas, key = { it.id }) { tarjeta ->
                     TarjetaItem(
                         tarjeta = tarjeta,
-                        onEliminar = { onEliminar(tarjeta.id) }
+                        onEliminar = { idAEliminar = tarjeta.id }
                     )
                 }
             }
@@ -81,6 +90,16 @@ fun ListaScreen(
                 .align(Alignment.BottomEnd)
                 .navigationBarsPadding()
                 .padding(20.dp)
+        )
+    }
+    if (tarjetaAEliminar != null) {
+        DialogoEliminar(
+            pregunta = tarjetaAEliminar.pregunta,
+            onConfirmar = {
+                onEliminar(tarjetaAEliminar.id)
+                idAEliminar = null
+            },
+            onCancelar = { idAEliminar = null }
         )
     }
 }

@@ -1,13 +1,16 @@
 package com.cristo.flashcard.data
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 
 class FlashcardRepository(private val dataSource: FlashcardDataSource) {
 
-    val tarjetas: Flow<List<Flashcard>> = dataSource.leerUsuario().map { delUsuario ->
-        dataSource.tarjetasSemilla() + delUsuario
+    val tarjetas: Flow<List<Flashcard>> = combine(
+        dataSource.leerUsuario(),
+        dataSource.leerEliminadas()
+    ) { delUsuario, eliminadas ->
+        dataSource.tarjetasSemilla().filter { it.id !in eliminadas } + delUsuario
     }
 
     suspend fun agregarTarjeta(pregunta: String, respuesta: String) {
@@ -23,7 +26,13 @@ class FlashcardRepository(private val dataSource: FlashcardDataSource) {
     }
 
     suspend fun eliminarTarjeta(id: Int) {
-        val delUsuario = dataSource.leerUsuario().first()
-        dataSource.guardarUsuario(delUsuario.filter { it.id != id })
+        val esSemilla = dataSource.tarjetasSemilla().any { it.id == id }
+        if (esSemilla) {
+            val eliminadas = dataSource.leerEliminadas().first()
+            dataSource.guardarEliminadas(eliminadas + id)
+        } else {
+            val delUsuario = dataSource.leerUsuario().first()
+            dataSource.guardarUsuario(delUsuario.filter { it.id != id })
+        }
     }
 }

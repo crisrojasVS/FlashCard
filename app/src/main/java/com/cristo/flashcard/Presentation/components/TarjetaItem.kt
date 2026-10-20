@@ -62,14 +62,12 @@ fun TarjetaItem(
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.weight(1f)
         )
-        if (!tarjeta.esBase) {
-            IconButton(onClick = onEliminar) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = stringResource(R.string.eliminar_tarjeta),
-                    tint = colorResource(R.color.error)
-                )
-            }
+        IconButton(onClick = onEliminar) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = stringResource(R.string.eliminar_tarjeta),
+                tint = colorResource(R.color.error)
+            )
         }
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,

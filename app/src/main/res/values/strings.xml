@@ -47,4 +47,7 @@
     // Para eliminar
 
     <string name="eliminar_tarjeta">Eliminar tarjeta</string>
+    <string name="titulo_eliminar">¿Desea eliminar la tarjeta?</string>
+    <string name="mensaje_eliminar">Se eliminará la pregunta «%1$s». Esta acción no se puede deshacer.</string>
+    <string name="boton_eliminar">Eliminar</string>
 </resources>
