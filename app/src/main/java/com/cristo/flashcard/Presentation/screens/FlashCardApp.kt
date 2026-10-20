@@ -19,7 +19,8 @@ fun FlashcardApp(viewModel: FlashcardVM) {
         screen.LISTA -> ListaScreen(
             estado = estado,
             onEstudiar = { viewModel.irA(screen.ESTUDIO) },
-            onNueva = { viewModel.irA(screen.NUEVA) }
+            onNueva = { viewModel.irA(screen.NUEVA) },
+            onEliminar = { id -> viewModel.eliminarTarjeta(id) }
         )
         screen.ESTUDIO -> EstudioScreen(
             estado = estado,

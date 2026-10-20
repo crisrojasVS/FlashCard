@@ -21,4 +21,9 @@ class FlashcardRepository(private val dataSource: FlashcardDataSource) {
         )
         dataSource.guardarUsuario(delUsuario + nueva)
     }
+
+    suspend fun eliminarTarjeta(id: Int) {
+        val delUsuario = dataSource.leerUsuario().first()
+        dataSource.guardarUsuario(delUsuario.filter { it.id != id })
+    }
 }

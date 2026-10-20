@@ -31,7 +31,8 @@ import com.cristo.flashcard.R
 fun ListaScreen(
     estado: FlashcardUiState,
     onEstudiar: () -> Unit,
-    onNueva: () -> Unit
+    onNueva: () -> Unit,
+    onEliminar: (Int) -> Unit
 ) {
 
     Box(
@@ -65,7 +66,10 @@ fun ListaScreen(
                     )
                 }
                 items(estado.tarjetas, key = { it.id }) { tarjeta ->
-                    TarjetaItem(tarjeta)
+                    TarjetaItem(
+                        tarjeta = tarjeta,
+                        onEliminar = { onEliminar(tarjeta.id) }
+                    )
                 }
             }
         }

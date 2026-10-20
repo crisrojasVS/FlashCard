@@ -67,4 +67,10 @@ class FlashcardVM(private val repository: FlashcardRepository) : ViewModel() {
             irA(screen.LISTA)
         }
     }
+
+    fun eliminarTarjeta(id: Int) {
+        viewModelScope.launch {
+            repository.eliminarTarjeta(id)
+        }
+    }
 }

@@ -43,4 +43,8 @@
     <string name="boton_guardar">Guardar tarjeta</string>
     <string name="boton_cancelar">Cancelar</string>
     <string name="error_campos_vacios">Escribe la pregunta y la respuesta</string>
+
+    // Para eliminar
+
+    <string name="eliminar_tarjeta">Eliminar tarjeta</string>
 </resources>

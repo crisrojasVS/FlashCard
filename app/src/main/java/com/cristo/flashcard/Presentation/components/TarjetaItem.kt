@@ -12,13 +12,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,7 +29,10 @@ import com.cristo.flashcard.R
 import com.cristo.flashcard.data.Flashcard
 
 @Composable
-fun TarjetaItem(tarjeta: Flashcard) {
+fun TarjetaItem(
+    tarjeta: Flashcard,
+    onEliminar: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -56,6 +62,15 @@ fun TarjetaItem(tarjeta: Flashcard) {
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.weight(1f)
         )
+        if (!tarjeta.esBase) {
+            IconButton(onClick = onEliminar) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = stringResource(R.string.eliminar_tarjeta),
+                    tint = colorResource(R.color.error)
+                )
+            }
+        }
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = null,
