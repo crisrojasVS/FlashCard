@@ -36,6 +36,9 @@ fun CampoTexto(
             shape = RoundedCornerShape(14.dp),
             minLines = lineas,
             colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = colorResource(R.color.texto),
+                unfocusedTextColor = colorResource(R.color.texto),
+                cursorColor = colorResource(R.color.primario),
                 focusedBorderColor = colorResource(R.color.primario),
                 unfocusedBorderColor = colorResource(R.color.borde),
                 focusedContainerColor = colorResource(R.color.blanco),
